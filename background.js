@@ -1,8 +1,5 @@
 function onClicked (tab) {
   // Send a message to the active tab
-
-
-
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     var activeTab = tabs[0];
 
@@ -13,11 +10,16 @@ function onClicked (tab) {
     document.body.appendChild(input);
     input.select();
     document.execCommand('Copy');
-    alert('done');
+    //alert('done');
     document.body.removeChild(input);
+    chrome.browserAction.setIcon({path:"icon_green.png"});
 
-    // chrome.tabs.sendMessage(activeTab.id, {"message": "clicked_browser_action"});
+    setTimeout(resetIcon, 3000);
   });
+}
+
+function resetIcon() {
+  chrome.browserAction.setIcon({ path: 'icon.png' });
 }
 
 chrome.browserAction.onClicked.addListener(onClicked);
