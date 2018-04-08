@@ -1,2 +1,2 @@
 # shrugfun-chrome
-¯\_(ツ)_/¯ chrome ¯\_(ツ)_/¯
+¯\\\_(ツ)\_/¯ chrome ¯\\\_(ツ)\_/¯
