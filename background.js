@@ -5,14 +5,20 @@ function onClicked (tab) {
   input.value = "¯\\_(ツ)_/¯";
   document.body.appendChild(input);
   input.select();
-  document.execCommand('Copy');
+  var copyResult = document.execCommand('Copy');
   document.body.removeChild(input);
+
+  if (!copyResult) {
+    chrome.browserAction.setIcon({path:"icon_error.png"});
+    return setTimeout(resetIcon, 10000);
+  }
+
   chrome.browserAction.setIcon({path:"icon_green.png"});
-  setTimeout(resetIcon, 2530);
+  setTimeout(resetIcon, 5000);
 }
 
 function resetIcon() {
-  chrome.browserAction.setIcon({ path: 'icon.png' });
+  chrome.browserAction.setIcon({path:"icon.png"})
 }
 
 chrome.browserAction.onClicked.addListener(onClicked);
